@@ -17,14 +17,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.exkazuu.mimicdance.R;
+import net.exkazuu.mimicdance.models.Program;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by t-yokoi on 2015/10/13.
  */
 public class NotificationActivity extends BaseActivity {
-    String[][] program = new String[2][12];
+    Program[] mCommands = new Program[12];
     String[] commands = new String[4];
     ArrayList<String> Gcom = new ArrayList<String>();
     ArrayList<String> Ccom = new ArrayList<String>();
@@ -38,10 +42,8 @@ public class NotificationActivity extends BaseActivity {
         setContentView(R.layout.notification);
 
         //コードの初期化
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 12; j++) {
-                program[i][j] = "";
-            }
+        for (int i = 0; i < 12; i++) {
+            mCommands[i] = new Program();
         }
 
 //        //nameは通知プログラム名
@@ -106,6 +108,7 @@ public class NotificationActivity extends BaseActivity {
         //記述可能部分
         initializeCanWrite();
         initializeProgramIcons();
+
 
         //ここから
 
@@ -347,30 +350,33 @@ public class NotificationActivity extends BaseActivity {
     }
 
     private void initializeCanWrite() {
-        ImageView[][] canWrite = new ImageView[2][12];
-        int[][] resc = new int[2][12];
-        NotificationDragListener ndl = null;
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 12; j++) {
-                resc[i][j] = this.getResources().getIdentifier("canwrite" + i + "_" + j, "id", this.getPackageName());
-                canWrite[i][j] = (ImageView) findViewById(resc[i][j]);
-                ndl = new NotificationDragListener(this, canWrite, program);
-                canWrite[i][j].setOnTouchListener(ndl);
+        WritableView wv[][] = new WritableView[12][2];
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 2; j++) {
+                int id = this.getResources().getIdentifier("canwrite" + j + "_" + i, "id", this.getPackageName());
+                Log.v("id", "i=" + i + " j=" + j + " id=" + id);
+                wv[i][j] = (WritableView) findViewById(id);
+                wv[i][j].setLocate(i, j);
+                wv[i][j].setCommand("");
+
             }
         }
     }
 
     private void initializeProgramIcons() {
-        ImageView[][] canWrite = new ImageView[2][12];
-        int[][] resc = new int[2][12];
-        NotificationDragListener ndl = null;
-        for (int i = 0; i < 3; i++) {
-            int id = getResources().getIdentifier("action_"+i, "id", getPackageName());
-            ImageView imageView = (ImageView) findViewById(id);
-            NotificationDragListener listner = new NotificationDragListener(this, canWrite, program);
-            imageView.setOnTouchListener(listner);
-            imageView.setVisibility(View.VISIBLE);
-//           action_0~2
+        Map<Integer, String> map = new HashMap<>();
+        map.put(R.id.action_0, "right_hand_up");
+        map.put(R.id.action_1, "right_hand_down");
+        map.put(R.id.action_2, "left_hand_up");
+        map.put(R.id.action_3, "left_hand_down");
+
+        Set<Map.Entry<Integer, String>> entries = map.entrySet();
+        for (Map.Entry<Integer, String> entry : entries) {
+            int id = entry.getKey();
+            ProgramIconView piv = (ProgramIconView) findViewById(id);
+            piv.setVisibility(View.VISIBLE);
+            piv.setCommand(entry.getValue());
+
         }
     }
 
