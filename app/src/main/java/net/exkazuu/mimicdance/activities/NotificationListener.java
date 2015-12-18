@@ -12,6 +12,8 @@ import android.service.notification.StatusBarNotification;
 import android.util.Log;
 import android.widget.Toast;
 
+import net.exkazuu.mimicdance.models.Program;
+
 import java.util.ArrayList;
 
 public class NotificationListener extends NotificationListenerService {
@@ -27,7 +29,7 @@ public class NotificationListener extends NotificationListenerService {
             @Override
             public void run() {
 //                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-                ArrayList<String> com = new ArrayList<String>();
+                ArrayList<Program> com = new ArrayList<Program>();
                 int flag = 0;
                 if (msg.equals("jp.mynavi.notification.android.notificationsample")) {
                     comName = "Fcom";
@@ -46,37 +48,49 @@ public class NotificationListener extends NotificationListenerService {
 
                 if (flag != 1) {
 //                    //データベースから読み込む
-//                    String str = "data/data/" + getPackageName() + "/Sample.db";
-//                    SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(str, null);
-//
-//                    String qry1 = "CREATE TABLE " + comName + " (id INTEGER PRIMARY KEY, text STRING)";
-//                    String qry3 = "SELECT * FROM " + comName;
-//
-//                    //テーブルの作成
-//                    try {
-//                        db.execSQL(qry1);
-//                    } catch (SQLException e) {
-//                        Log.e("ERROR", e.toString());
-//                    }
-//
-//                    //データの検索
-//                    Cursor cr = db.rawQuery(qry3, null);
-//                    //startManagingCursor(cr);
-//
-//                    int x = 0;
-//                    int y = 0;
-//                    while (cr.moveToNext()) {
-//                        int t = cr.getColumnIndex("text");
-//                        String text = cr.getString(t);
-//                        com.add(text);
-//                    }
-//                    //db.close();
-//
-//                    if (comName.equals("Gcom") || comName.equals("Ccom") || comName.equals("Tcom") || comName.equals("Fcom")) {
-//                        Toast.makeText(getApplicationContext(), comName, Toast.LENGTH_SHORT).show();
-//                    }
-//                    System.out.println(msg);
-                    Toast.makeText(getApplicationContext(), comName + "やで", Toast.LENGTH_SHORT).show();
+                    String str = "data/data/" + getPackageName() + "/Sample.db";
+                    SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(str, null);
+
+                    String qry1 = "CREATE TABLE " + comName + " (id INTEGER PRIMARY KEY, text STRING)";
+                    String qry3 = "SELECT * FROM " + comName;
+
+                    //テーブルの作成
+                    try {
+                        db.execSQL(qry1);
+                    } catch (SQLException e) {
+                        Log.e("ERROR", e.toString());
+                    }
+
+                    //データの検索
+                    Cursor cr = db.rawQuery(qry3, null);
+                    //startManagingCursor(cr);
+
+                    int x = 0;
+                    int y = 0;
+                    if(!cr.moveToFirst()) {
+                        cr.close();
+                        return;
+                    }
+
+                    int t = cr.getColumnIndex("text");
+                    do {
+                        String text = cr.getString(t);
+                        String program[] = text.split(",", 2);
+                        Program p = new Program();
+                        p.setCommands(0,program[0]);
+                        p.setCommands(1,program[1]);
+                        com.add(p);
+                    } while(cr.moveToNext());
+
+                    cr.close();
+                    //db.close();
+
+                    if (comName.equals("Gcom") || comName.equals("Ccom") || comName.equals("Tcom") || comName.equals("Fcom")) {
+                        Toast.makeText(getApplicationContext(), comName, Toast.LENGTH_SHORT).show();
+                        new MiniBearHandler(com,getApplicationContext(), new ArduinoBear());
+                    }
+                    System.out.println(msg);
+                    Toast.makeText(getApplicationContext(), comName, Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -90,7 +104,7 @@ public class NotificationListener extends NotificationListenerService {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(), msg + "消えたよん", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), msg + "消えた", Toast.LENGTH_SHORT).show();
             }
         });
     }

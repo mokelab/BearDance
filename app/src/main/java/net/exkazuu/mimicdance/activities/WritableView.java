@@ -23,9 +23,11 @@ import net.exkazuu.mimicdance.R;
 public class WritableView extends ImageView {
     private TextView resultText;
 
-    private final Bitmap writable = Bitmap.createScaledBitmap(
-        BitmapFactory.decodeResource(getContext().getResources()
-            , R.drawable.icon_writable), 200, 200, true);
+//    private final Bitmap writable = Bitmap.createScaledBitmap(
+//        BitmapFactory.decodeResource(getContext().getResources()
+//            , R.drawable.icon_writable), 200, 200, true);
+
+    private final Bitmap writable = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.icon_writable);
 
     private Bitmap overWideBitmap = writable;
     private int x;

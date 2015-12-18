@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="#00ffff"
+  android:orientation="vertical"
   android:paddingBottom="@dimen/activity_vertical_margin"
   android:paddingLeft="@dimen/activity_horizontal_margin"
   android:paddingRight="@dimen/activity_horizontal_margin"
@@ -14,441 +15,428 @@
 
 
   <!-- アイコンたち -->
-  <TextView
-    android:id="@+id/action"
+  <HorizontalScrollView
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:text="アクション"
-    android:textColor="#FFCC33"
-    android:textSize="25dp" />
+    android:layout_height="wrap_content">
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/action_0"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/action"
-    android:src="@drawable/icon_right_hand_up" />
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:orientation="horizontal">
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/action_1"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/action"
-    android:layout_toRightOf="@id/action_0"
-    android:src="@drawable/icon_right_hand_down" />
+      <TextView
+        android:id="@+id/action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="アクション"
+        android:textColor="#FFCC33"
+        android:textSize="25dp" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/action_2"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/action"
-    android:layout_toRightOf="@id/action_1"
-    android:src="@drawable/icon_left_hand_up" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/action_0"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:src="@drawable/icon_right_hand_up" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/action_3"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/action"
-    android:layout_toRightOf="@id/action_2"
-    android:src="@drawable/icon_left_hand_down" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/action_1"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:src="@drawable/icon_right_hand_down" />
 
-  <TextView
-    android:id="@+id/branch"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/action_0"
-    android:padding="5dp"
-    android:text="場合わけ"
-    android:textColor="#C9171E"
-    android:textSize="25dp" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/action_2"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:src="@drawable/icon_left_hand_up" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/branch_0"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/branch"
-    android:src="@drawable/icon_if" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/action_3"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/action"
+        android:layout_toRightOf="@id/action_2"
+        android:src="@drawable/icon_left_hand_down" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/branch_1"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/branch"
-    android:layout_toRightOf="@id/branch_0"
-    android:src="@drawable/icon_else" />
+      <TextView
+        android:id="@+id/branch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/action_0"
+        android:padding="5dp"
+        android:text="場合わけ"
+        android:textColor="#C9171E"
+        android:textSize="25dp" />
+
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/branch_0"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/branch"
+        android:src="@drawable/icon_if" />
+
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/branch_1"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/branch"
+        android:layout_toRightOf="@id/branch_0"
+        android:src="@drawable/icon_else" />
 
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/branch_2"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/branch"
-    android:layout_toRightOf="@id/branch_1"
-    android:src="@drawable/icon_end_if" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/branch_2"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/branch"
+        android:layout_toRightOf="@id/branch_1"
+        android:src="@drawable/icon_end_if" />
 
-  <TextView
-    android:id="@+id/event"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/branch_0"
-    android:padding="5dp"
-    android:text="イベント"
-    android:textColor="#274765"
-    android:textSize="25dp" />
+      <TextView
+        android:id="@+id/event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/branch_0"
+        android:padding="5dp"
+        android:text="イベント"
+        android:textColor="#274765"
+        android:textSize="25dp" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/event_0"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/event"
-    android:src="@drawable/icon_num0" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/event_0"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/event"
+        android:src="@drawable/icon_num0" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/event_1"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/event"
-    android:layout_toRightOf="@id/event_0"
-    android:src="@drawable/icon_num1" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/event_1"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/event"
+        android:layout_toRightOf="@id/event_0"
+        android:src="@drawable/icon_num1" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/event_2"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/event"
-    android:layout_toRightOf="@id/event_1"
-    android:src="@drawable/icon_num2" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/event_2"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/event"
+        android:layout_toRightOf="@id/event_1"
+        android:src="@drawable/icon_num2" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/event_3"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/event"
-    android:layout_toRightOf="@id/event_2"
-    android:src="@drawable/icon_num3" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/event_3"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/event"
+        android:layout_toRightOf="@id/event_2"
+        android:src="@drawable/icon_num3" />
 
-  <TextView
-    android:id="@+id/loop"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/event_0"
-    android:padding="5dp"
-    android:text="繰り返し"
-    android:textColor="#005931"
-    android:textSize="25dp" />
+      <TextView
+        android:id="@+id/loop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/event_0"
+        android:padding="5dp"
+        android:text="繰り返し"
+        android:textColor="#005931"
+        android:textSize="25dp" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/loop_0"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/loop"
-    android:src="@drawable/icon_loop" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/loop_0"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/loop"
+        android:src="@drawable/icon_loop" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/loop_1"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/loop"
-    android:layout_toRightOf="@id/loop_0"
-    android:src="@drawable/icon_end_loop" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/loop_1"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/loop"
+        android:layout_toRightOf="@id/loop_0"
+        android:src="@drawable/icon_end_loop" />
 
-  <TextView
-    android:id="@+id/number"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/loop_0"
-    android:padding="5dp"
-    android:text="数字"
-    android:textColor="#F36C21"
-    android:textSize="25dp" />
+      <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loop_0"
+        android:padding="5dp"
+        android:text="数字"
+        android:textColor="#F36C21"
+        android:textSize="25dp" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_0"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number"
-    android:src="@drawable/icon_num1" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_0"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number"
+        android:src="@drawable/icon_num1" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_1"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number"
-    android:layout_toRightOf="@id/number_0"
-    android:src="@drawable/icon_num2" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_1"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number"
+        android:layout_toRightOf="@id/number_0"
+        android:src="@drawable/icon_num2" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_2"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number"
-    android:layout_toRightOf="@id/number_1"
-    android:src="@drawable/icon_num3" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_2"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number"
+        android:layout_toRightOf="@id/number_1"
+        android:src="@drawable/icon_num3" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_3"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number_0"
-    android:src="@drawable/icon_num4" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_3"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number_0"
+        android:src="@drawable/icon_num4" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_4"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number_1"
-    android:layout_toRightOf="@id/number_3"
-    android:src="@drawable/icon_num5" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_4"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number_1"
+        android:layout_toRightOf="@id/number_3"
+        android:src="@drawable/icon_num5" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_5"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number_2"
-    android:layout_toRightOf="@id/number_4"
-    android:src="@drawable/icon_num6" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_5"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number_2"
+        android:layout_toRightOf="@id/number_4"
+        android:src="@drawable/icon_num6" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_6"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number_3"
-    android:src="@drawable/icon_num7" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_6"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number_3"
+        android:src="@drawable/icon_num7" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_7"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number_4"
-    android:layout_toRightOf="@id/number_6"
-    android:src="@drawable/icon_num8" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_7"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number_4"
+        android:layout_toRightOf="@id/number_6"
+        android:src="@drawable/icon_num8" />
 
-  <net.exkazuu.mimicdance.activities.ProgramIconView
-    android:id="@+id/number_8"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/number_3"
-    android:layout_toRightOf="@id/number_7"
-    android:src="@drawable/icon_num9" />
+      <net.exkazuu.mimicdance.activities.ProgramIconView
+        android:id="@+id/number_8"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/number_3"
+        android:layout_toRightOf="@id/number_7"
+        android:src="@drawable/icon_num9" />
+
+    </LinearLayout>
+  </HorizontalScrollView>
 
   <!-- 背景たち -->
+  <HorizontalScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-  <ImageView
-    android:id="@+id/layout1"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_alignParentRight="true" />
+    <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1">
 
-  <ImageView
-    android:id="@+id/layout"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_toLeftOf="@id/layout1" />
 
-  <!-- 記述可能な位置を教える -->
-  <!-- 1行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_0"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 記述可能な位置を教える -->
+      <!-- 1行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_0"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_0"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_toLeftOf="@id/canwrite1_0"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_0"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/canwrite0_0"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 2行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_1"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_0"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 2行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_1"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@id/canwrite0_0"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_1"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_0"
-    android:layout_toLeftOf="@id/canwrite1_1"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_1"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@id/canwrite1_0"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 3行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_2"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_1"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 3行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_2"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_2"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_2"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_1"
-    android:layout_toLeftOf="@id/canwrite1_2"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_2"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_1"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 4行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_3"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_2"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 4行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_3"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_3"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_3"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_2"
-    android:layout_toLeftOf="@id/canwrite1_3"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_3"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_2"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 5行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_4"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_3"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 5行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_4"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_4"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_4"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_3"
-    android:layout_toLeftOf="@id/canwrite1_4"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_4"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_3"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 6行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_5"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_4"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 6行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_5"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_5"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_5"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_4"
-    android:layout_toLeftOf="@id/canwrite1_5"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_5"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_4"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 7行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_6"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_5"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 7行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_6"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_6"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_6"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_5"
-    android:layout_toLeftOf="@id/canwrite1_6"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_6"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_5"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 8行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_7"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_6"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 8行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_7"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_7"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_7"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_6"
-    android:layout_toLeftOf="@id/canwrite1_7"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_7"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_6"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 9行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_8"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_7"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 9行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_8"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_8"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_8"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_7"
-    android:layout_toLeftOf="@id/canwrite1_8"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_8"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_7"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 10行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_9"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_8"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 10行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_9"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_9"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_9"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_8"
-    android:layout_toLeftOf="@id/canwrite1_9"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_9"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_8"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 11行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_10"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_9"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 11行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_10"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_10"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_10"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_9"
-    android:layout_toLeftOf="@id/canwrite1_10"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_10"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_9"
+        android:src="@drawable/icon_writable" />
 
-  <!-- 12行目 -->
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite1_11"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite1_10"
-    android:layout_toLeftOf="@id/layout"
-    android:src="@drawable/icon_none" />
+      <!-- 12行目 -->
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite1_11"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_below="@+id/canwrite0_11"
+        android:src="@drawable/icon_writable" />
 
-  <net.exkazuu.mimicdance.activities.WritableView
-    android:id="@+id/canwrite0_11"
-    android:layout_width="61dip"
-    android:layout_height="61dip"
-    android:layout_below="@id/canwrite0_10"
-    android:layout_toLeftOf="@id/canwrite1_11"
-    android:src="@drawable/icon_writable" />
+      <net.exkazuu.mimicdance.activities.WritableView
+        android:id="@+id/canwrite0_11"
+        android:layout_width="61dip"
+        android:layout_height="61dip"
+        android:layout_toRightOf="@+id/canwrite0_10"
+        android:src="@drawable/icon_writable" />
+    </RelativeLayout>
+  </HorizontalScrollView>
+
 
   <!-- ゴミ箱 -->
   <net.exkazuu.mimicdance.activities.WritableView
@@ -459,63 +447,5 @@
     android:layout_below="@id/canwrite1_9"
     android:src="@drawable/dustbox" />
 
-  <Button
-    android:id="@+id/SaveButton"
-    android:layout_width="150dip"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentRight="true"
-    android:onClick="onClickSaveButton"
-    android:text="保存" />
 
-  <Button
-    android:id="@+id/ReturnButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_toLeftOf="@id/SaveButton"
-    android:onClick="onClickReturnButton"
-    android:text="戻る" />
-
-  <!--　確認ボタン類　-->
-
-  <Button
-    android:id="@+id/Facebook"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/SaveButton"
-    android:layout_alignParentRight="true"
-    android:onClick="onClickFacebookButton"
-    android:text="Facebook" />
-
-  <Button
-    android:id="@+id/Twitter"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/SaveButton"
-    android:layout_toLeftOf="@id/Facebook"
-    android:onClick="onClickTwitterButton"
-    android:text="Twitter" />
-
-  <Button
-    android:id="@+id/Calendar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/SaveButton"
-    android:layout_toLeftOf="@id/Twitter"
-    android:onClick="onClickCalendarButton"
-    android:text="Calendar" />
-
-
-  <Button
-    android:id="@+id/Gmail"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/SaveButton"
-    android:layout_toLeftOf="@+id/Calendar"
-    android:onClick="onClickGmailButton"
-    android:text="Gmail" />
-
-
-  <!--android:drawableLeft="@drawable/icon_fb"-->
-</RelativeLayout>
+</LinearLayout>

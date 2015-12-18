@@ -14,4 +14,5 @@ public class Program {
     public void setCommands(int index, String value) {
         commands[index] = value;
     }
+    public String getCommand(int index) { return commands[index];}
 }

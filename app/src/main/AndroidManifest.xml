@@ -29,38 +29,39 @@
     </activity>
     <activity
       android:name=".activities.LessonListActivity"
-      android:label="@string/title_lesson_list_activity"></activity>
+      android:label="@string/title_lesson_list_activity"/>
     <activity
       android:name=".activities.CodingActivity"
       android:label="@string/title_coding_activity"
-      android:windowSoftInputMode="adjustResize"></activity>
+      android:windowSoftInputMode="adjustResize"/>
     <activity
       android:name=".activities.CoccoActivity"
-      android:label="@string/title_cocco_activity"></activity>
+      android:label="@string/title_cocco_activity"/>
     <activity
       android:name=".activities.EvaluationActivity"
-      android:label="@string/title_evaluation_activity"></activity>
+      android:label="@string/title_evaluation_activity"/>
     <activity
       android:name=".activities.TutorialActivity"
-      android:label="@string/title_tutorial_activity"></activity>
+      android:label="@string/title_tutorial_activity"/>
     <activity
       android:name=".activities.HelpActivity"
-      android:label="@string/help"></activity>
+      android:label="@string/help"/>
     <activity
       android:name=".activities.CorrectAnswerActivity"
-      android:label="@string/correct_answer"></activity>
+      android:label="@string/correct_answer"/>
     <activity
       android:name=".activities.WrongAnswerActivity"
-      android:label="@string/wrong_answer"></activity>
+      android:label="@string/wrong_answer"/>
     <activity
       android:name=".activities.PreQuestionnaireActivity"
-      android:label="@string/pre_questionnaire"></activity>
+      android:label="@string/pre_questionnaire"/>
     <activity
       android:name=".activities.PostQuestionnaireActivity"
-      android:label="@string/post_questionnaire"></activity>
+      android:label="@string/post_questionnaire"/>
     <activity
       android:name=".activities.NotificationActivity"
-      android:label="@string/notification"></activity>
+      android:label="@string/notification"
+      android:screenOrientation="landscape"/>
 
     <service
       android:name=".activities.NotificationListener"
