@@ -196,6 +196,7 @@ public class NotificationFragment extends Fragment {
     public void onCommandClicked(String command) {
         if (mState == STATE_SELECT_PROGRAM) {
             // 先にプログラムの枠を選んでもらうので、何もしない
+            Snackbar.make(mRootView, R.string.select_program_first, Snackbar.LENGTH_SHORT).show();
         } else if (mState == STATE_SELECT_COMMAND) {
             mAdapter.setCommand(mSelectedPosition, mSelectedIndex, command);
             mAdapter.setSelected(-1, -1);
