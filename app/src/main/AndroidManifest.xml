@@ -62,6 +62,12 @@
       android:name=".activities.NotificationActivity"
       android:label="@string/notification"
       android:screenOrientation="landscape"/>
+    <activity
+      android:name=".activities.notification.NotificationActivity"
+      android:label="@string/notification"
+      android:screenOrientation="landscape"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+      />
 
     <service
       android:name=".activities.NotificationListener"

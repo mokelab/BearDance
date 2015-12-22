@@ -12,7 +12,7 @@ import android.service.notification.StatusBarNotification;
 import android.util.Log;
 import android.widget.Toast;
 
-import net.exkazuu.mimicdance.models.Program;
+import net.exkazuu.mimicdance.models.program.Program;
 
 import java.util.ArrayList;
 

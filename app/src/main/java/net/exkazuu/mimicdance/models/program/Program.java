@@ -1,4 +1,4 @@
-package net.exkazuu.mimicdance.models;
+package net.exkazuu.mimicdance.models.program;
 
 /**
  * Created by t-yokoi on 2015/12/15.

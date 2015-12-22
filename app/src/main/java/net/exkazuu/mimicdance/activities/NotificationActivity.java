@@ -1,23 +1,12 @@
 package net.exkazuu.mimicdance.activities;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import net.exkazuu.mimicdance.R;
-import net.exkazuu.mimicdance.models.Program;
+import net.exkazuu.mimicdance.models.program.Program;
 
 import java.util.ArrayList;
 import java.util.HashMap;
