@@ -76,6 +76,7 @@
   <string name="title_continue">続ける</string>
   <string name="title_reset">やりなおし</string>
   <string name="title_trash">ゴミ箱</string>
+  <string name="save_done">保存したよ！</string>
 
 
 </resources>

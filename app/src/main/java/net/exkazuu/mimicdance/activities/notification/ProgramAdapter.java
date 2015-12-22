@@ -1,6 +1,7 @@
 package net.exkazuu.mimicdance.activities.notification;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,7 +25,6 @@ import butterknife.OnClick;
  * プログラム部分(下)用のAdapter
  */
 public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHolder> {
-
     public interface OnItemClickListener {
         void onItemClick(int position, int index);
     }
@@ -37,14 +37,11 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
     private int mSelectedPosition;
     private int mSelectedIndex;
 
-    public ProgramAdapter(Context context, OnItemClickListener listener) {
+    public ProgramAdapter(Context context, List<Program> list, OnItemClickListener listener) {
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mListener = listener;
-        mProgramList = new ArrayList<>(12);
-        for (int i = 0 ; i < 12 ; ++i) {
-            mProgramList.add(new Program());
-        }
+        mProgramList = list;
         // 最初は未選択状態
         mSelectedPosition = -1;
         mSelectedIndex = -1;
@@ -72,6 +69,14 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
             p.setCommands(0, "");
             p.setCommands(1, "");
         }
+    }
+
+    public Program[] getAsArray() {
+        return mProgramList.toArray(new Program[mProgramList.size()]);
+    }
+
+    public List<Program> getAsList() {
+        return mProgramList;
     }
 
     @Override

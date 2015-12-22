@@ -1,7 +1,9 @@
 package net.exkazuu.mimicdance.activities.notification;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +24,13 @@ import android.view.ViewGroup;
 
 import net.exkazuu.mimicdance.R;
 import net.exkazuu.mimicdance.models.program.Command;
+import net.exkazuu.mimicdance.models.program.Program;
+import net.exkazuu.mimicdance.models.program.ProgramDAO;
+import net.exkazuu.mimicdance.models.program.ProgramDAOImpl;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,12 +42,20 @@ import jp.fkmsoft.android.framework.util.FragmentUtils;
 public class NotificationFragment extends Fragment {
     private static final int STATE_SELECT_PROGRAM = 0;
     private static final int STATE_SELECT_COMMAND = 1;
+    // 中断用
+    private static final String STATE_PROGRAM_LIST = "programList";
+    private static final String STATE_TAB_INDEX = "tabIndex";
+    private static final String STATE_PAGE_STATE = "pageState";
+    private static final String STATE_SELECTED_POSITION = "selectedPosition";
+    private static final String STATE_SELECTED_INDEX = "selectedIndex";
 
+    @Bind(R.id.root) View mRootView;
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.tablayout) TabLayout mTabLayout;
     @Bind(R.id.recycler) RecyclerView mRecyclerView;
 
     private ProgramAdapter mAdapter;
+    private ProgramDAO mProgramDAO;
     /**
      * 選択の状態
      */
@@ -65,7 +82,7 @@ public class NotificationFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        mState = STATE_SELECT_PROGRAM;
+        mProgramDAO = new ProgramDAOImpl(getContext());
     }
 
     @Nullable
@@ -91,17 +108,57 @@ public class NotificationFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
+        // Toolbarの設定。タイトル文字列は消す
         activity.setSupportActionBar(mToolbar);
         ActionBar actionBar = activity.getSupportActionBar();
         if (actionBar != null) { actionBar.setTitle(""); }
 
-        mAdapter = new ProgramAdapter(activity, mItemClickListener);
+        // 保存されているプログラムを読み込み
+        List<Program> programList;
+        int tabIndex;
+        if (savedInstanceState == null) {
+            programList = mProgramDAO.load();
+            tabIndex = 0;
+            mState = STATE_SELECT_PROGRAM;
+            mSelectedPosition = -1;
+            mSelectedIndex = -1;
+        } else {
+            Parcelable[] list = savedInstanceState.getParcelableArray(STATE_PROGRAM_LIST);
+            tabIndex = savedInstanceState.getInt(STATE_TAB_INDEX);
+            mState = savedInstanceState.getInt(STATE_PAGE_STATE);
+            mSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
+            mSelectedIndex = savedInstanceState.getInt(STATE_SELECTED_INDEX);
+            if (list == null) {
+                programList = mProgramDAO.load();
+            } else {
+                programList = new ArrayList<>(list.length);
+                for (Parcelable p : list) {
+                    programList.add((Program)p);
+                }
+            }
+        }
+
+        mAdapter = new ProgramAdapter(activity, programList, mItemClickListener);
+        mAdapter.setSelected(mSelectedPosition, mSelectedIndex);
         mRecyclerView.setAdapter(mAdapter);
         mTouchHelper.attachToRecyclerView(mRecyclerView);
+        TabLayout.Tab tab = mTabLayout.getTabAt(tabIndex);
+        if (tab != null) { tab.select(); }
+
         if (savedInstanceState == null) {
             FragmentUtils.toNextFragment(getChildFragmentManager(), R.id.layout_toolbox,
                 ToolboxFragment.newInstance(Command.GROUP_ACTION), false);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArray(STATE_PROGRAM_LIST, mAdapter.getAsArray());
+        outState.putInt(STATE_TAB_INDEX, mTabLayout.getSelectedTabPosition());
+        outState.putInt(STATE_PAGE_STATE, mState);
+        outState.putInt(STATE_SELECTED_POSITION, mSelectedPosition);
+        outState.putInt(STATE_SELECTED_INDEX, mSelectedIndex);
     }
 
     @Override
@@ -117,6 +174,10 @@ public class NotificationFragment extends Fragment {
         case R.id.action_trash:
             // ゴミ箱は、選択した枠を空にする処理
             onCommandClicked("");
+            return true;
+        case R.id.action_save: // 保存
+            mProgramDAO.save(mAdapter.getAsList());
+            Snackbar.make(mRootView, R.string.save_done, Snackbar.LENGTH_LONG).show();
             return true;
         case R.id.action_reset: // やりなおし
             mState = STATE_SELECT_PROGRAM;
