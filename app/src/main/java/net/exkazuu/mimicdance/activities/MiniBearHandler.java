@@ -1,18 +1,10 @@
 package net.exkazuu.mimicdance.activities;
 
 import android.content.Context;
-import android.media.MediaPlayer;
 
 import java.util.ArrayList;
 
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
-
-import net.exkazuu.mimicdance.models.Program;
-
-import java.util.ArrayList;
+import net.exkazuu.mimicdance.models.program.Program;
 
 
 /**
