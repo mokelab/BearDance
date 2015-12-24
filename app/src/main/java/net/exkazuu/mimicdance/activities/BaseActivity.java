@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import net.exkazuu.mimicdance.activities.notification.*;
+
 public abstract class BaseActivity extends Activity {
 
     /**
@@ -151,7 +153,8 @@ public abstract class BaseActivity extends Activity {
     }
 
     protected void startNotificationActivity(boolean clear) {
-        Intent intent = new Intent(this, NotificationActivity.class);
+//        Intent intent = new Intent(this, NotificationActivity.class);
+        Intent intent = new Intent(this, net.exkazuu.mimicdance.activities.notification.NotificationActivity.class);
         if (clear) {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
