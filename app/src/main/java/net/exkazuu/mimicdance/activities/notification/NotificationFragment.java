@@ -185,6 +185,10 @@ public class NotificationFragment extends Fragment {
             mAdapter.setSelected(-1, -1);
             mAdapter.notifyDataSetChanged();
             return true;
+        case R.id.action_quit:
+            getFragmentManager().beginTransaction().remove(this).commit();
+            getActivity().finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
