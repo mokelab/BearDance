@@ -12,6 +12,7 @@ import android.service.notification.StatusBarNotification;
 import android.util.Log;
 import android.widget.Toast;
 
+import net.exkazuu.mimicdance.models.program.Command;
 import net.exkazuu.mimicdance.models.program.Program;
 import net.exkazuu.mimicdance.models.program.ProgramDAO;
 import net.exkazuu.mimicdance.models.program.ProgramDAOImpl;
@@ -39,13 +40,13 @@ public class NotificationListener extends NotificationListenerService {
                 if (msg.equals("jp.mynavi.notification.android.notificationsample")) {
                     comName = "Fcom";
                 } else if (msg.equals("com.google.android.gm")) {
-                    comName = "Gcom";
+                    comName = Command.GMAIL;
                 } else if (msg.equals("com.google.android.calendar")) {
-                    comName = "Ccom";
+                    comName = Command.CALENDER;
                 } else if (msg.equals("com.twitter.android")) {
-                    comName = "Tcom";
+                    comName = Command.TWITTER;
                 } else if (msg.equals("com.facebook.katana")) {
-                    comName = "Fcom";
+                    comName = Command.FACEBOOK;
                 } else {
                     comName = "よくわからないやつ";
                     flag = 1;
@@ -96,10 +97,9 @@ public class NotificationListener extends NotificationListenerService {
 
                     programList = mProgramDAO.load();
 
-                    if (comName.equals("Gcom") || comName.equals("Ccom") || comName.equals("Tcom") || comName.equals("Fcom")) {
-//                        Toast.makeText(getApplicationContext(), comName, Toast.LENGTH_SHORT).show();
+                    if (comName.equals(Command.GMAIL) || comName.equals(Command.CALENDER) || comName.equals(Command.TWITTER) || comName.equals(Command.FACEBOOK)) {
                         MiniBearHandler miniBear = new MiniBearHandler(programList, getApplicationContext(), new ArduinoBear());
-                        miniBear.main();
+                        miniBear.main(comName);
 //                        Toast.makeText(getApplicationContext(), programList.get(0).getCommand(0), Toast.LENGTH_SHORT).show();
 //                        Log.v("command", programList.get(0).getCommand(0));
                     }

@@ -63,6 +63,7 @@ public class Command {
             GMAIL, FACEBOOK, TWITTER, CALENDER
         });
         sCommandGroupMap.put(GROUP_NUMBER, new String[]{
+            LOOP, END_LOOP, 
             NUMBER_1, NUMBER_2, NUMBER_3, NUMBER_4, NUMBER_5,
             NUMBER_6, NUMBER_7, NUMBER_8, NUMBER_9
         });

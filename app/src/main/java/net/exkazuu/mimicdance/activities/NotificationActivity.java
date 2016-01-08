@@ -371,7 +371,6 @@ public class NotificationActivity extends BaseActivity {
         map.put(R.id.loop_1,"loop_end");
         map.put(R.id.branch_0,"if");
         map.put(R.id.branch_1,"if");
-        map.put(R.id.branch_0,"if");
 
         Set<Map.Entry<Integer, String>> entries = map.entrySet();
         for (Map.Entry<Integer, String> entry : entries) {

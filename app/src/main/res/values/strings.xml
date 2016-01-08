@@ -71,13 +71,14 @@
   <string name="tab_action">アクション</string>
   <string name="tab_condition">場合分け</string>
   <string name="tab_event">イベント</string>
-  <string name="tab_repeat">数字</string>
+  <string name="tab_repeat">繰り返し</string>
   <string name="title_save">保存</string>
   <string name="title_continue">続ける</string>
   <string name="title_reset">やりなおし</string>
   <string name="title_trash">ゴミ箱</string>
   <string name="save_done">保存したよ！</string>
   <string name="select_program_first">まず、プログラムの枠をえらんでね</string>
+
 
 
 </resources>
