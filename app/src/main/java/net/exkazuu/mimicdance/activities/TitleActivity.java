@@ -47,6 +47,9 @@ public class TitleActivity extends BaseActivity {
         Button notificationButton = (Button) findViewById(R.id.notification_button);
         notificationButton.setVisibility(View.VISIBLE);
 
+        Toast.makeText(TitleActivity.this, "test", Toast.LENGTH_SHORT).show();
+        Log.v("","test");
+
 
 //        Button kumaBottun = (Button) findViewById(R.id.kuma_test);
 //        kumaBottun.setVisibility(View.VISIBLE);

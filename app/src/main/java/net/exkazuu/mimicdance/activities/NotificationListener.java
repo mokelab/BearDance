@@ -35,6 +35,7 @@ public class NotificationListener extends NotificationListenerService {
             @Override
             public void run() {
 //                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                Log.v("test",msg);
                 ArrayList<Program> com = new ArrayList<Program>();
                 int flag = 0;
                 if (msg.equals("jp.mynavi.notification.android.notificationsample")) {
