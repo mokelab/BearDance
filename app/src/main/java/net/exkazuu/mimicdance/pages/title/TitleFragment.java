@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import net.exkazuu.mimicdance.activities.LessonListActivity;
 import net.exkazuu.mimicdance.activities.TitleActivity;
 import net.exkazuu.mimicdance.activities.notification.NotificationActivity;
 import net.exkazuu.mimicdance.models.lesson.LessonDAO;
+import net.exkazuu.mimicdance.pages.help.HelpFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -64,8 +67,18 @@ public class TitleFragment extends Fragment {
     @OnClick(R.id.help_button)
     void helpClicked() {
         lessonDAO.upload();
+        FragmentManager manager = getFragmentManager();
+        if (manager == null) { return; }
+
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.addToBackStack("");
+        transaction.replace(R.id.container, HelpFragment.newInstance());
+        transaction.commit();
+
+        /*
         Intent intent = new Intent(getActivity(), HelpActivity.class);
         startActivity(intent);
+        */
     }
 
 
