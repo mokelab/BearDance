@@ -30,7 +30,6 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
-      android:onClick="prev"
       android:text="@string/arrow_left" />
 
     <EditText
@@ -47,7 +46,6 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
-      android:onClick="next"
       android:text="@string/arrow_right" />
 
     <Button
@@ -55,7 +53,6 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
-      android:onClick="close"
       android:text="@string/close" />
 
   </TableRow>
