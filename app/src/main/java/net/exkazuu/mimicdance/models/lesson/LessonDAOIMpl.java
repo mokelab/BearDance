@@ -1,121 +1,40 @@
-package net.exkazuu.mimicdance.activities;
+package net.exkazuu.mimicdance.models.lesson;
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.provider.Settings;
+import android.util.Log;
 
-import net.exkazuu.mimicdance.R;
-import net.exkazuu.mimicdance.models.lesson.LessonDAO;
-import net.exkazuu.mimicdance.models.lesson.LessonDAOImpl;
-import net.exkazuu.mimicdance.pages.title.TitleFragment;
+import com.activeandroid.query.Select;
 
-public class TitleActivity extends AppCompatActivity {
+import net.exkazuu.mimicdance.models.LessonClear;
+import net.exkazuu.mimicdance.models.PostQuestionnaireResult;
+import net.exkazuu.mimicdance.models.PreQuestionnaireResult;
 
-    private LessonDAO lessonDAO;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ArduinoManager.register(this);
-        setContentView(R.layout.activity_main);
+import im.delight.android.ddp.MeteorSingleton;
 
-        lessonDAO = new LessonDAOImpl(this);
-        lessonDAO.init();
+/**
+ * Implementation
+ */
+public class LessonDAOImpl implements LessonDAO {
+    private final Context context;
 
-        if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-            transaction.add(R.id.container, TitleFragment.newInstance());
-
-            transaction.commit();
-        }
+    public LessonDAOImpl(Context context) {
+        this.context = context.getApplicationContext();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        PlugManager.register(this);
-        ArduinoManager.resume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        PlugManager.unregister(this);
-        ArduinoManager.pause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        ArduinoManager.unregister(this);
-    }
-
-    public LessonDAO getLessonDAO() {
-        return lessonDAO;
-    }
-/*
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void init() {
         if (!MeteorSingleton.isCreated()) {
-            MeteorSingleton.createInstance(this, "ws://mimic-dance-server.herokuapp.com/websocket");
+            MeteorSingleton.createInstance(context, "ws://mimic-dance-server.herokuapp.com/websocket");
         }
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE); // タイトルバー非表示
-        setContentView(R.layout.title);
-
-        Button helpButton = (Button) findViewById(R.id.start_button);
-        helpButton.setVisibility(View.VISIBLE);
-        Button startButton = (Button) findViewById(R.id.help_button);
-        startButton.setVisibility(View.VISIBLE);
-        Button freeButton = (Button) findViewById(R.id.free_button);
-        freeButton.setVisibility(View.GONE);
-        Button preButton = (Button) findViewById(R.id.pre_ques_button);
-        preButton.setVisibility(View.INVISIBLE);
-        Button postButton = (Button) findViewById(R.id.post_ques_button);
-        postButton.setVisibility(View.INVISIBLE);
-        Button notificationButton = (Button) findViewById(R.id.notification_button);
-        notificationButton.setVisibility(View.VISIBLE);
-
-        Toast.makeText(TitleActivity.this, "test", Toast.LENGTH_SHORT).show();
-        Log.v("","test");
-
-
-        Button kumaBottun = (Button) findViewById(R.id.kuma_test);
-        kumaBottun.setVisibility(View.VISIBLE);
-
-        uploadData();
     }
 
-    public void startHelpActivity(View view) {
-        uploadData();
-//        startHelpActivity(false);
-    }
-
-    public void startLessonListActivity(View view) {
-        uploadData();
-//        startLessonListActivity(true);
-    }
-
-    public void startPreQuestionnaireActivity(View view) {
-        uploadData();
-//        startPreQuestionnaireActivity(false);
-    }
-
-    public void startPostQuestionnaireActivity(View view) {
-        uploadData();
-//        startPostQuestionnaireActivity(false);
-    }
-
-    public void freePlay(View view) {
-    }
-
-    public void startNotificationActivity(View view) {
-//        startNotificationActivity(false);
-    }
-
-    public void uploadData() {
+    @Override
+    public void upload() {
         MeteorSingleton.getInstance().reconnect();
         List<LessonClear> lessonClears = new Select().from(LessonClear.class).where("Sent = ?", false).orderBy("Created_at").execute();
         List<PreQuestionnaireResult> preQuestionnaireResults = new Select().from(PreQuestionnaireResult.class).where("Sent = ?", false).orderBy("Created_at").execute();
@@ -139,7 +58,7 @@ public class TitleActivity extends AppCompatActivity {
                 item.save();
             }
 
-            String androidId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+            String androidId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
             for (PreQuestionnaireResult item : preQuestionnaireResults) {
                 Map<String, Object> values = new HashMap<>();
                 values.put("created_at", item.created_at);
@@ -180,5 +99,4 @@ public class TitleActivity extends AppCompatActivity {
         } catch (Exception e) {
         }
     }
-*/
 }
