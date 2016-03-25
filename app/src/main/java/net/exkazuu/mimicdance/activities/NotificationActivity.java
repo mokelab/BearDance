@@ -358,6 +358,19 @@ public class NotificationActivity extends BaseActivity {
         map.put(R.id.action_1, "right_hand_down");
         map.put(R.id.action_2, "left_hand_up");
         map.put(R.id.action_3, "left_hand_down");
+        map.put(R.id.number_0,"num_1");
+        map.put(R.id.number_1,"num_2");
+        map.put(R.id.number_2,"num_3");
+        map.put(R.id.number_3,"num_4");
+        map.put(R.id.number_4,"num_5");
+        map.put(R.id.number_5,"num_6");
+        map.put(R.id.number_6,"num_7");
+        map.put(R.id.number_7,"num_8");
+        map.put(R.id.number_8,"num_9");
+        map.put(R.id.loop_0,"loop");
+        map.put(R.id.loop_1,"loop_end");
+        map.put(R.id.branch_0,"if");
+        map.put(R.id.branch_1,"if");
 
         Set<Map.Entry<Integer, String>> entries = map.entrySet();
         for (Map.Entry<Integer, String> entry : entries) {

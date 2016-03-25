@@ -1,5 +1,7 @@
 package net.exkazuu.mimicdance.activities;
 
+import android.util.Log;
+
 /**
  * Created by t-yokoi on 2015/12/18.
  */
@@ -30,6 +32,7 @@ public class ArduinoBear implements Bear{
 
     @Override
     public void excecute() {
+        Log.v("command","right:"+commands[0]+" ,left:"+commands[1]);
         ArduinoManager.sendCommand(commands);
     }
 }
