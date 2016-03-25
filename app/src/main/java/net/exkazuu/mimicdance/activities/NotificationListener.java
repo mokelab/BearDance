@@ -100,6 +100,7 @@ public class NotificationListener extends NotificationListenerService {
 
                     if (comName.equals(Command.GMAIL) || comName.equals(Command.CALENDER) || comName.equals(Command.TWITTER) || comName.equals(Command.FACEBOOK)) {
                         MiniBearHandler miniBear = new MiniBearHandler(programList, getApplicationContext(), new ArduinoBear());
+                        ArduinoManager.resume();
                         miniBear.main(comName);
 //                        Toast.makeText(getApplicationContext(), programList.get(0).getCommand(0), Toast.LENGTH_SHORT).show();
 //                        Log.v("command", programList.get(0).getCommand(0));
