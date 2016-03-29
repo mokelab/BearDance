@@ -99,6 +99,8 @@ public class NotificationListener extends NotificationListenerService {
                     programList = mProgramDAO.load();
 
                     if (comName.equals(Command.GMAIL) || comName.equals(Command.CALENDER) || comName.equals(Command.TWITTER) || comName.equals(Command.FACEBOOK)) {
+                        // 再接続
+                        ArduinoManager.resume();
                         MiniBearHandler miniBear = new MiniBearHandler(programList, getApplicationContext(), new ArduinoBear());
                         miniBear.main(comName);
 //                        Toast.makeText(getApplicationContext(), programList.get(0).getCommand(0), Toast.LENGTH_SHORT).show();
