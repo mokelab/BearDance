@@ -26,9 +26,9 @@
   <string name="action">こたえあわせ</string>
   <string name="return_action">戻る</string>
   <string name="Title_how_to_play">あそびかた</string>
-  <string name="Title_start_button">まねっこ</string>
-  <string name="notification">通知</string>
-  <string name="Title_free_play">自由に踊る</string>
+  <string name="Title_start_button">プログラミング\nレッスン</string>
+  <string name="notification">おしらせの\nダンスをつくる</string>
+  <string name="Title_free_play">ロボットを\nダンスさせる</string>
   <string name="look_answer_button">①おてほんを見る</string>
   <string name="text_look">まずは、お手本をチェック！</string>
   <string name="player_source_code">playerSourceCordArea</string>
