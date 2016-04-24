@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import net.exkazuu.mimicdance.R;
 import net.exkazuu.mimicdance.viewholder.TextViewHolder;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class LessonListAdapter extends RecyclerView.Adapter<TextViewHolder> {
 
     @Override
     public TextViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return TextViewHolder.create(this.inflater, parent, this.listener);
+        return new TextViewHolder(this.inflater.inflate(R.layout.item_lesson_list, parent, false), this.listener);
     }
 
     @Override

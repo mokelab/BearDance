@@ -79,7 +79,7 @@
   <string name="save_done">保存したよ！</string>
   <string name="select_program_first">まず、プログラムの枠をえらんでね</string>
   <string name="help_page">%1$d / %2$d</string>
-
+  <string name="title_lesson_list">レッスンをえらぼう</string>
 
 
 </resources>
