@@ -11,10 +11,12 @@
     android:name=".App"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme"
+    >
     <activity
       android:name=".activities.TitleActivity"
-      android:label="@string/app_name">
+      android:label="@string/app_name"
+      android:screenOrientation="landscape">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
@@ -29,7 +31,8 @@
     </activity>
     <activity
       android:name=".activities.LessonListActivity"
-      android:label="@string/title_lesson_list_activity"/>
+      android:label="@string/title_lesson_list_activity"
+      android:screenOrientation="landscape"/>
     <activity
       android:name=".activities.CodingActivity"
       android:label="@string/title_coding_activity"

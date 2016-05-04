@@ -18,9 +18,11 @@ import net.exkazuu.mimicdance.activities.TitleActivity;
 import net.exkazuu.mimicdance.activities.notification.NotificationActivity;
 import net.exkazuu.mimicdance.models.lesson.LessonDAO;
 import net.exkazuu.mimicdance.pages.help.HelpFragment;
+import net.exkazuu.mimicdance.pages.lesson.list.LessonListFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import jp.fkmsoft.android.framework.util.FragmentUtils;
 
 /**
  * タイトル画面
@@ -84,16 +86,16 @@ public class TitleFragment extends Fragment {
 
     @OnClick(R.id.notification_button)
     void notificationClicked() {
-        lessonDAO.upload();
+        //lessonDAO.upload();
         Intent intent = new Intent(getActivity(), NotificationActivity.class);
         startActivity(intent);
     }
 
     @OnClick(R.id.start_button)
     void startClicked() {
-        lessonDAO.upload();
-        Intent intent = new Intent(getActivity(), LessonListActivity.class);
-        startActivity(intent);
+        //lessonDAO.upload();
+        FragmentUtils.toNextFragment(getFragmentManager(), R.id.container,
+            LessonListFragment.newInstance(), true);
     }
 
     // endregion
