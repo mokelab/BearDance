@@ -86,14 +86,14 @@ public class TitleFragment extends Fragment {
 
     @OnClick(R.id.notification_button)
     void notificationClicked() {
-        lessonDAO.upload();
+        //lessonDAO.upload();
         Intent intent = new Intent(getActivity(), NotificationActivity.class);
         startActivity(intent);
     }
 
     @OnClick(R.id.start_button)
     void startClicked() {
-        lessonDAO.upload();
+        //lessonDAO.upload();
         FragmentUtils.toNextFragment(getFragmentManager(), R.id.container,
             LessonListFragment.newInstance(), true);
     }
