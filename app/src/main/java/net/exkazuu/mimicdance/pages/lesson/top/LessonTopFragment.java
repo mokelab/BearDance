@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import net.exkazuu.mimicdance.Lessons;
 import net.exkazuu.mimicdance.R;
+import net.exkazuu.mimicdance.activities.notification.NotificationFragment;
 import net.exkazuu.mimicdance.models.computer.Computer;
 import net.exkazuu.mimicdance.models.computer.ComputerImpl;
 import net.exkazuu.mimicdance.models.lesson.LessonDAO;
@@ -19,12 +19,11 @@ import net.exkazuu.mimicdance.models.program.Program;
 import net.exkazuu.mimicdance.models.robot.CoccoRobot;
 import net.exkazuu.mimicdance.models.robot.PiyoRobot;
 import net.exkazuu.mimicdance.models.robot.Robot;
-import net.exkazuu.mimicdance.program.Block;
-import net.exkazuu.mimicdance.program.CodeParser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import jp.fkmsoft.android.framework.util.FragmentUtils;
 
 /**
  * Framgment for Lesson top page
@@ -98,6 +97,12 @@ public class LessonTopFragment extends Fragment {
         FragmentManager manager = getFragmentManager();
         if (manager == null) { return; }
         manager.popBackStack();
+    }
+
+    @OnClick(R.id.button_write)
+    void writeClicked() {
+        FragmentUtils.toNextFragment(getFragmentManager(), R.id.container,
+            NotificationFragment.newInstance(), true);
     }
 
     @OnClick(R.id.button_move)
