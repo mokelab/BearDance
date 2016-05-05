@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.exkazuu.mimicdance.R;
-import net.exkazuu.mimicdance.activities.notification.NotificationFragment;
 import net.exkazuu.mimicdance.models.computer.Computer;
 import net.exkazuu.mimicdance.models.computer.ComputerImpl;
 import net.exkazuu.mimicdance.models.lesson.LessonDAO;
@@ -19,6 +18,8 @@ import net.exkazuu.mimicdance.models.program.Program;
 import net.exkazuu.mimicdance.models.robot.CoccoRobot;
 import net.exkazuu.mimicdance.models.robot.PiyoRobot;
 import net.exkazuu.mimicdance.models.robot.Robot;
+import net.exkazuu.mimicdance.pages.editor.EditorFragment;
+import net.exkazuu.mimicdance.pages.lesson.editor.LessonEditorFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,6 +31,8 @@ import jp.fkmsoft.android.framework.util.FragmentUtils;
  */
 public class LessonTopFragment extends Fragment {
     private static final String ARGS_LESSON_NUMBER = "lessonNumber";
+
+    private static final int REQUEST_WRITE = 1000;
 
     private int lessonNumber;
 
@@ -102,7 +105,7 @@ public class LessonTopFragment extends Fragment {
     @OnClick(R.id.button_write)
     void writeClicked() {
         FragmentUtils.toNextFragment(getFragmentManager(), R.id.container,
-            NotificationFragment.newInstance(), true);
+            LessonEditorFragment.newInstance(this, REQUEST_WRITE), true);
     }
 
     @OnClick(R.id.button_move)
