@@ -80,6 +80,8 @@
   <string name="select_program_first">まず、プログラムの枠をえらんでね</string>
   <string name="help_page">%1$d / %2$d</string>
   <string name="title_lesson_list">レッスンをえらぼう</string>
+  <string name="move">動かす</string>
+  <string name="logo">ロゴ</string>
 
 
 </resources>

@@ -129,6 +129,7 @@
         android:src="@drawable/alt_cocco_right_foot_up1"
         android:visibility="visible" />
     </FrameLayout>
+
   </LinearLayout>
 
   <LinearLayout

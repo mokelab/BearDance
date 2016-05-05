@@ -1,0 +1,46 @@
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:id="@+id/altCoccoLeftHand"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/image_area"
+    android:fitsSystemWindows="true"
+    android:src="@drawable/alt_cocco_left_hand_up1"
+    android:visibility="visible" />
+
+  <ImageView
+    android:id="@+id/altCoccoRightHand"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/image_area"
+    android:src="@drawable/alt_cocco_right_hand_up1"
+    android:visibility="visible" />
+
+  <ImageView
+    android:id="@+id/altCoccoBody"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/image_area"
+    android:src="@drawable/alt_cocco_basic"
+    android:visibility="visible" />
+
+  <ImageView
+    android:id="@+id/altCoccoLeftFoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/image_area"
+    android:src="@drawable/alt_cocco_left_foot_up1"
+    android:visibility="visible" />
+
+  <ImageView
+    android:id="@+id/altCoccoRightFoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/image_area"
+    android:src="@drawable/alt_cocco_right_foot_up1"
+    android:visibility="visible" />
+</FrameLayout>

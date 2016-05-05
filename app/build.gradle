@@ -56,8 +56,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:percent:23.3.0'
     compile 'jp.fkmsoft.libs:android-app-framework-v4:1.1.0.23.1.1'
     compile 'com.google.guava:guava:18.+'
     compile 'com.deploygate:sdk:3.+'
