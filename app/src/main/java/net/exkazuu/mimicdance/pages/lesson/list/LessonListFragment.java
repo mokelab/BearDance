@@ -16,9 +16,11 @@ import android.view.ViewGroup;
 import net.exkazuu.mimicdance.Lessons;
 import net.exkazuu.mimicdance.R;
 import net.exkazuu.mimicdance.activities.CoccoActivity;
+import net.exkazuu.mimicdance.pages.lesson.top.LessonTopFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import jp.fkmsoft.android.framework.util.FragmentUtils;
 
 /**
  * Fragment for lesson list
@@ -81,10 +83,14 @@ public class LessonListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             int position = (int) v.getTag();
+            FragmentUtils.toNextFragment(getFragmentManager(), R.id.container,
+                LessonTopFragment.newInstance(position + 1), true);
+/*
             Intent intent = new Intent(getActivity(), CoccoActivity.class);
             intent.putExtra("lessonNumber", position + 1);
             intent.putExtra("piyoCode", "");
             startActivity(intent);
+*/
         }
     };
 }
