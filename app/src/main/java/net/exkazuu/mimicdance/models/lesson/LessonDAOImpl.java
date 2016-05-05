@@ -9,7 +9,10 @@ import com.activeandroid.query.Select;
 import net.exkazuu.mimicdance.models.LessonClear;
 import net.exkazuu.mimicdance.models.PostQuestionnaireResult;
 import net.exkazuu.mimicdance.models.PreQuestionnaireResult;
+import net.exkazuu.mimicdance.models.program.Command;
+import net.exkazuu.mimicdance.models.program.Program;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,5 +101,15 @@ public class LessonDAOImpl implements LessonDAO {
             Log.d("upload", "uploaded");
         } catch (Exception e) {
         }
+    }
+
+    @Override
+    public List<Program> getLessonProgram(int lessonId, int position) {
+        List<Program> list = new ArrayList<>();
+        list.add(new Program(Command.LEFT_HAND_UP, Command.NOP));
+        list.add(new Program(Command.LEFT_HAND_DOWN, Command.NOP));
+        list.add(new Program(Command.RIGHT_HAND_UP, Command.NOP));
+        list.add(new Program(Command.RIGHT_HAND_DOWN, Command.NOP));
+        return list;
     }
 }

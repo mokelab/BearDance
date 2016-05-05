@@ -13,13 +13,19 @@ public class ComputerImpl implements Computer {
 
     private final List<Program> programList;
 
+    private boolean stopped;
+
     public ComputerImpl(List<Program> programList) {
         this.pc = 0;
         this.programList = programList;
+        this.stopped = false;
     }
 
     @Override
     public Result eval() {
+        if (this.stopped) {
+            return new ResultImpl(null, true);
+        }
         while (true) {
             if (programList.size() <= pc) {
                 return new ResultImpl(null, true);
@@ -29,6 +35,11 @@ public class ComputerImpl implements Computer {
             // If program has condition statement, evaluate here and modify the program counter.
             return new ResultImpl(program, false);
         }
+    }
+
+    @Override
+    public void stop() {
+        this.stopped = true;
     }
 
     private static class ResultImpl implements Computer.Result {
@@ -46,6 +57,7 @@ public class ComputerImpl implements Computer {
             return halt;
         }
 
+        @Override
         public Program getProgram() {
             return program;
         }

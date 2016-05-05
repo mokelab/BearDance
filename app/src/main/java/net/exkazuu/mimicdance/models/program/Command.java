@@ -11,6 +11,8 @@ import java.util.Map;
  * コマンド文字列の定数
  */
 public class Command {
+    public static final String NOP = "";
+
     public static final String RIGHT_HAND_UP = "right_hand_up";
     public static final String RIGHT_HAND_DOWN = "right_hand_down";
     public static final String LEFT_HAND_UP = "left_hand_up";
@@ -63,7 +65,7 @@ public class Command {
             GMAIL, FACEBOOK, TWITTER, CALENDER
         });
         sCommandGroupMap.put(GROUP_NUMBER, new String[]{
-            LOOP, END_LOOP, 
+            LOOP, END_LOOP,
             NUMBER_1, NUMBER_2, NUMBER_3, NUMBER_4, NUMBER_5,
             NUMBER_6, NUMBER_7, NUMBER_8, NUMBER_9
         });
