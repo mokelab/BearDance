@@ -47,17 +47,22 @@ public class EditorFragment extends Fragment {
     private static final String STATE_SELECTED_POSITION = "selectedPosition";
     private static final String STATE_SELECTED_INDEX = "selectedIndex";
 
-    @Bind(R.id.root) View mRootView;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.tablayout) TabLayout mTabLayout;
+    @Bind(R.id.root) public View mRootView;
+    @Bind(R.id.toolbar) public Toolbar mToolbar;
+    @Bind(R.id.tablayout) public TabLayout mTabLayout;
     @Bind(R.id.recycler) public RecyclerView mRecyclerView;
 
-    private ProgramAdapter mAdapter;
+    protected ProgramAdapter mAdapter;
     private ProgramDAO mProgramDAO;
     /**
      * 選択の状態
      */
     private int mState;
+
+    /**
+     * タブの位置
+     */
+    private int mSavedTabIndex;
     /**
      * 選択されたプログラムの位置
      */
@@ -109,14 +114,16 @@ public class EditorFragment extends Fragment {
         // Toolbarの設定。タイトル文字列は消す
         activity.setSupportActionBar(mToolbar);
         ActionBar actionBar = activity.getSupportActionBar();
-        if (actionBar != null) { actionBar.setTitle(""); }
+        if (actionBar != null) {
+            actionBar.setTitle("");
+        }
 
         // 保存されているプログラムを読み込み
         List<Program> programList;
         int tabIndex;
         if (savedInstanceState == null) {
             programList = mProgramDAO.load();
-            tabIndex = 0;
+            tabIndex = mSavedTabIndex;
             mState = STATE_SELECT_PROGRAM;
             mSelectedPosition = -1;
             mSelectedIndex = -1;
@@ -131,13 +138,14 @@ public class EditorFragment extends Fragment {
             } else {
                 programList = new ArrayList<>(list.length);
                 for (Parcelable p : list) {
-                    programList.add((Program)p);
+                    programList.add((Program) p);
                 }
             }
         }
-
-        mAdapter = new ProgramAdapter(activity, programList, mItemClickListener);
-        mAdapter.setSelected(mSelectedPosition, mSelectedIndex);
+        if (mAdapter == null) {
+            mAdapter = new ProgramAdapter(activity, programList, mItemClickListener);
+            mAdapter.setSelected(mSelectedPosition, mSelectedIndex);
+        }
         mRecyclerView.setAdapter(mAdapter);
         mTouchHelper.attachToRecyclerView(mRecyclerView);
         TabLayout.Tab tab = mTabLayout.getTabAt(tabIndex);
@@ -153,7 +161,7 @@ public class EditorFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelableArray(STATE_PROGRAM_LIST, mAdapter.getAsArray());
-        outState.putInt(STATE_TAB_INDEX, mTabLayout.getSelectedTabPosition());
+        outState.putInt(STATE_TAB_INDEX, mSavedTabIndex);
         outState.putInt(STATE_PAGE_STATE, mState);
         outState.putInt(STATE_SELECTED_POSITION, mSelectedPosition);
         outState.putInt(STATE_SELECTED_INDEX, mSelectedIndex);
@@ -243,6 +251,7 @@ public class EditorFragment extends Fragment {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
             int type;
+            mSavedTabIndex = tab.getPosition();
             switch (tab.getPosition()) {
             case 0: // アクション
                 type = Command.GROUP_ACTION;

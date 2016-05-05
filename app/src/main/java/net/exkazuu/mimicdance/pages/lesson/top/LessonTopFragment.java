@@ -20,6 +20,7 @@ import net.exkazuu.mimicdance.models.robot.PiyoRobot;
 import net.exkazuu.mimicdance.models.robot.Robot;
 import net.exkazuu.mimicdance.pages.editor.EditorFragment;
 import net.exkazuu.mimicdance.pages.lesson.editor.LessonEditorFragment;
+import net.exkazuu.mimicdance.pages.lesson.preview.ComputeRunnable;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -135,53 +136,4 @@ public class LessonTopFragment extends Fragment {
     }
 
     // endregion
-
-    private static class ComputeRunnable implements Runnable {
-        private final Computer computer;
-        private final Robot robot;
-        private final Handler handler;
-
-        private ComputeRunnable(Computer computer, Robot robot, Handler handler) {
-            this.computer = computer;
-            this.robot = robot;
-            this.handler = handler;
-        }
-
-        @Override
-        public void run() {
-            Computer.Result result = this.computer.eval();
-            if (result.isHalt()) { return; }
-
-            this.handler.post(new MoveRobotRunnable(result.getProgram(), computer, robot, handler));
-        }
-    }
-
-    private static class MoveRobotRunnable implements Runnable {
-        private static final long FRAME_INTERVAL = 500; // 500ms
-        private final Program program;
-        private final Computer computer;
-        private final Robot robot;
-        private final Handler handler;
-
-        private int loopCount;
-
-        private MoveRobotRunnable(Program program, Computer computer, Robot robot, Handler handler) {
-            this.program = program;
-            this.computer = computer;
-            this.robot = robot;
-            this.handler = handler;
-            this.loopCount = 0;
-        }
-
-        @Override
-        public void run() {
-            if (this.loopCount >= 2) {
-                this.handler.post(new ComputeRunnable(this.computer, this.robot, this.handler));
-                return;
-            }
-            this.robot.execCommand(this.program);
-            ++this.loopCount;
-            this.handler.postDelayed(this, FRAME_INTERVAL);
-        }
-    }
 }
