@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentFrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  >
+    <include
+      layout="@layout/character_piyo"
+      android:id="@+id/character"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_gravity="center"
+      app:layout_heightPercent="100%"
+      app:layout_aspectRatio="78%"
+      />
+</android.support.percent.PercentFrameLayout>

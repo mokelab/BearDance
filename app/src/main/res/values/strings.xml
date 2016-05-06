@@ -82,6 +82,9 @@
   <string name="title_lesson_list">レッスンをえらぼう</string>
   <string name="move">動かす</string>
   <string name="logo">ロゴ</string>
+  <string name="back_to_model">おてほんにもどる</string>
+  <string name="check_answer">こたえあわせ</string>
+  <string name="check_program">かくにん</string>
 
 
 </resources>
